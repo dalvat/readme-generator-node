@@ -14,7 +14,7 @@ inquirer
     {
       type: 'input',
       name: 'description',
-      message: 'Write a description of your project.\nInclude information such as:\nWhat was your motivation for building the app?\nWhy did you build this project?\nWhat problem does it solve?\nWhat did you learn?\n',
+      message: 'Write a description of your project.\n\nWhat was your motivation for building the app?\nWhy did you build this project?\nWhat problem does it solve?\nWhat did you learn?\n\n',
     },
     {
       type: 'confirm',
@@ -40,14 +40,31 @@ inquirer
     {
       type: 'input',
       name: 'credits_collaborators_names',
-      message: 'Enter the the collaborators names in the following format "Joe Bloggs, Jane Doe, John Smith".',
+      message: 'Enter the collaborators names\n\nUse the following format: "Joe Bloggs, Jane Doe, John Smith"\n\n',
       when: (answers) => answers.credits_collaborators_q === true,
     },
     {
       type: 'input',
       name: 'credits_collaborators_gits',
-      message: 'Enter the the collaborators GitHub usernames in the follwing format "username, username2, username3".',
+      message: 'Enter the collaborators GitHub usernames\n\nEnsure they are in the same order as above\nUse the following format "username, username2, username3"\n\n',
       when: (answers) => answers.credits_collaborators_q === true,
+    },
+    {
+      type: 'confirm',
+      name: 'credits_attributions_q',
+      message: 'Are there any attributions for this project?\n\ne.g. third-party assets\n\n',
+    },
+    {
+      type: 'input',
+      name: 'credits_attributions_creators',
+      message: 'Enter the creators names\n\nUse the following format: "Creator 1, Creator 2, Creator 3"\n\n',
+      when: (answers) => answers.credits_attributions_q === true,
+    },
+    {
+      type: 'input',
+      name: 'credits_attributions_links',
+      message: 'Enter links to their primary web presence\n\nEnsure they are in the same order as above\nUse the following format "https://www.example1.com, https://www.example2.com, https://www.example3.com"\n\n',
+      when: (answers) => answers.credits_attributions_q === true,
     },
   ])
   // inquirer then with all instructions to write readme file
@@ -61,6 +78,9 @@ inquirer
     const projectCollaboratorsQ = answers.credits_collaborators_q;
     const projectCollaboratorsNames = answers.credits_collaborators_names;
     const projectCollaboratorsGits = answers.credits_collaborators_gits;
+    const projectAttributionsQ = answers.credits_attributions_q;
+    const projectAttributionsCreators = answers.credits_attributions_creators;
+    const projectAttributionsLinks = answers.credits_attributions_links;
 
 // readme file name is suffixed with projectTitle and saved in the generated_files folder
     let readmeFileName = `./generated_files/${projectTitle}-README.md`
@@ -77,7 +97,8 @@ ${projectDescription}\n\n`
 - [Installation](#installation)
 - [Usage](#usage)
 - [Credits](#credits)
-- [License](#license)\n
+- [License](#license)
+- [Badges](#badges)\n
 ## Installation\n
 ${projectInstallationSteps}\n\n`
 // else the installation section is excluded and is not shown in the table of contents
@@ -85,16 +106,29 @@ ${projectInstallationSteps}\n\n`
       readmeContent += `## Table of Contents\n
 - [Usage](#usage)
 - [Credits](#credits)
-- [License](#license)\n\n`
+- [License](#license)
+- [Badges](#badges)\n\n`
     }
 
 // readme file content for usage
     readmeContent += `## Usage\n
 ${projectUsage}\n\n`
 
-// readme file content for credits !!! switch statement to be added !!!
+// readme file content for credits
+// !!! SWITCH STATEMENT TO BE ADDED !!!
     readmeContent += `## Credits\n
-${projectCollaboratorsNames}\n${projectCollaboratorsGits}`
+${projectCollaboratorsNames}\n${projectCollaboratorsGits}\n
+${projectAttributionsCreators}\n${projectAttributionsLinks}\n\n`
+
+// readme file content for license information
+// !!! NOT COMPLETE !!!
+    readmeContent =+ `## License\n
+### LICENSE INFO GOES HERE`
+
+// readme file content for badges
+// !!! NOT COMPLETE !!!
+readmeContent =+ `## Badges\n
+### BADGES GO HERE`
 
 // writeFile operation to write the readme content to a file with the above defined filename
     fs.writeFile(readmeFileName, readmeContent, (error) => {
@@ -102,5 +136,4 @@ ${projectCollaboratorsNames}\n${projectCollaboratorsGits}`
         ? console.error(error)
         : console.log('File Created Successfully!')
     });
-
-  })
+  });
