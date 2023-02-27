@@ -76,11 +76,34 @@ inquirer
     const projectInstallationSteps = answers.installation_steps;
     const projectUsage = answers.usage;
     const projectCollaboratorsQ = answers.credits_collaborators_q;
-    const projectCollaboratorsNames = answers.credits_collaborators_names;
-    const projectCollaboratorsGits = answers.credits_collaborators_gits;
     const projectAttributionsQ = answers.credits_attributions_q;
-    const projectAttributionsCreators = answers.credits_attributions_creators;
-    const projectAttributionsLinks = answers.credits_attributions_links;
+    const projectCreditsQs = [projectCollaboratorsQ, projectAttributionsQ];
+
+    let projectCollaboratorsNames;
+    let projectCollaboratorsGits;
+    let projectAttributionsCreators;
+    let projectAttributionsLinks;
+
+// if statement to deal with single or multiple user entries for collaborators
+    if (answers.credits_collaborators_names !== undefined) {
+      if (answers.credits_collaborators_names[1] === undefined) {
+        projectCollaboratorsNames = [answers.credits_collaborators_names];
+        projectCollaboratorsGits = [answers.credits_collaborators_gits];
+      } else {
+        projectCollaboratorsNames = answers.credits_collaborators_names.split(', ');
+        projectCollaboratorsGits = answers.credits_collaborators_gits.split(', ');
+        };
+    };
+// if statement to deal with single or multiple user entries for creators
+    if (answers.credits_attributions_creators !== undefined) {
+      if (answers.credits_attributions_creators[1] === undefined) {
+        projectAttributionsCreators = [answers.credits_attributions_creators];
+        projectAttributionsLinks = [answers.credits_attributions_links];
+      } else {
+        projectAttributionsCreators = answers.credits_attributions_creators.split(', ');
+        projectAttributionsLinks = answers.credits_attributions_links.split(', ');
+        };
+    };
 
 // readme file name is suffixed with projectTitle and saved in the generated_files folder
     let readmeFileName = `./generated_files/${projectTitle}-README.md`
@@ -114,21 +137,48 @@ ${projectInstallationSteps}\n\n`
     readmeContent += `## Usage\n
 ${projectUsage}\n\n`
 
-// readme file content for credits
-// !!! SWITCH STATEMENT TO BE ADDED !!!
-    readmeContent += `## Credits\n
-${projectCollaboratorsNames}\n${projectCollaboratorsGits}\n
-${projectAttributionsCreators}\n${projectAttributionsLinks}\n\n`
+// readme file content for credits using if, else if statements
+    if (projectCreditsQs[0] === true && projectCreditsQs[1] === true) {
+      readmeContent += `## Credits\n\n### Collaborators:\n\n`
+      for (let i = 0; i < projectCollaboratorsNames.length; i++) {
+        const name = projectCollaboratorsNames[i];
+        const git = projectCollaboratorsGits[i];
+        readmeContent += `- ${name} ([GitHub Profile](https://github.com/${git}))\n`
+      }
+      readmeContent += `\n`
+      readmeContent += `### Attributions:\n\n`
+      for (let i = 0; i < projectAttributionsCreators.length; i++) {
+        const creator = projectAttributionsCreators[i];
+        const link = projectAttributionsLinks[i];
+        readmeContent += `- ${creator} ([Link to Website](https://github.com/${link}))\n`
+      }
+      readmeContent += `\n`
+      } else if (projectCreditsQs[0] === true && projectCreditsQs[1] === false) {
+        readmeContent += `## Credits\n\n### Collaborators:\n\n`
+        for (let i = 0; i < projectCollaboratorsNames.length; i++) {
+          const name = projectCollaboratorsNames[i];
+          const git = projectCollaboratorsGits[i];
+          readmeContent += `- ${name} ([GitHub Profile](https://github.com/${git}))\n`
+          readmeContent += `\n`
+        }} else if (projectCreditsQs[0] === false && projectCreditsQs[1] === true) {
+            readmeContent += `## Credits\n\n### Attributions:\n\n`
+            for (let i = 0; i < projectAttributionsCreators.length; i++) {
+              const creator = projectAttributionsCreators[i];
+              const link = projectAttributionsLinks[i];
+              readmeContent += `- ${creator} ([Link to Website](${link}))\n`
+            }
+            readmeContent += `\n`
+          };
 
 // readme file content for license information
 // !!! NOT COMPLETE !!!
-    readmeContent =+ `## License\n
-### LICENSE INFO GOES HERE`
+    readmeContent += `## License\n
+### LICENSE INFO GOES HERE\n\n`
 
 // readme file content for badges
 // !!! NOT COMPLETE !!!
-readmeContent =+ `## Badges\n
-### BADGES GO HERE`
+    readmeContent += `## Badges\n
+### BADGES GO HERE\n`
 
 // writeFile operation to write the readme content to a file with the above defined filename
     fs.writeFile(readmeFileName, readmeContent, (error) => {
