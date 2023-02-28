@@ -31,14 +31,14 @@ When you choose the appropriate license for your project, a badge is displayed a
 
 The video below shows a demo of the app running in Git Bash:
 
-[![Readme Generator - Node App - Demo](https://res.cloudinary.com/marcomontalbano/image/upload/v1677622185/video_to_markdown/images/google-drive--17yOSk6mFrJ-sef-zto42qQYpI6Jw2VXw-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://drive.google.com/file/d/17yOSk6mFrJ-sef-zto42qQYpI6Jw2VXw/view "Readme Generator - Node App - Demo"){:target="_blank"}
+[![Readme Generator - Node App - Demo](https://res.cloudinary.com/marcomontalbano/image/upload/v1677622185/video_to_markdown/images/google-drive--17yOSk6mFrJ-sef-zto42qQYpI6Jw2VXw-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://drive.google.com/file/d/17yOSk6mFrJ-sef-zto42qQYpI6Jw2VXw/view "Readme Generator - Node App - Demo")
 
 ## Credits
 
 ### Attributions:
 
-- npm ([Link to Website](https://www.npmjs.com){:target="_blank"})
-- inquirer ([Link to Website](https://www.npmjs.com/package/inquirer){:target="_blank"})
+- npm ([Link to Website](https://www.npmjs.com)
+- inquirer ([Link to Website](https://www.npmjs.com/package/inquirer{:target="_blank"}))
 
 ## License
 
