@@ -56,4 +56,4 @@ I am not aware of any bugs in the current version of the app, but if you encount
 
 ## Questions
 
-If you have any questions, feel free to contact me trhough my [GitHub profile](https://github.com/dalvat){:target="_blank"} or [email me](mailto:dmlswebdev@gmail.com).
+If you have any questions, feel free to contact me trhough my [GitHub profile](https://github.com/dalvat) or [email me](mailto:dmlswebdev@gmail.com).
