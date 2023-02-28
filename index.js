@@ -9,12 +9,12 @@ inquirer
     {
       type: 'input',
       name: 'title',
-      message: 'What is the title of your project?',
+      message: 'What is the title of the project?',
     },
     {
       type: 'input',
       name: 'description',
-      message: 'Write a description of your project.\n\nWhat was your motivation for building the app?\nWhy did you build this project?\nWhat problem does it solve?\nWhat did you learn?\n\n',
+      message: 'Write a description for the project.\nWhat was your motivation for building the app?\nWhy did you build this project?\nWhat problem does it solve?\nWhat did you learn?\n',
     },
     {
       type: 'confirm',
@@ -40,30 +40,30 @@ inquirer
     {
       type: 'input',
       name: 'credits_collaborators_names',
-      message: 'Enter the collaborators names\n\nUse the following format: "Joe Bloggs, Jane Doe, John Smith"\n\n',
+      message: 'Enter the collaborators names\nUse the following format: "Joe Bloggs, Jane Doe, John Smith"\n',
       when: (answers) => answers.credits_collaborators_q === true,
     },
     {
       type: 'input',
       name: 'credits_collaborators_gits',
-      message: 'Enter the collaborators GitHub usernames\n\nEnsure they are in the same order as above\nUse the following format "username, username2, username3"\n\n',
+      message: 'Enter the collaborators GitHub usernames\nEnsure they are in the same order as above\nUse the following format "username, username2, username3"\n',
       when: (answers) => answers.credits_collaborators_q === true,
     },
     {
       type: 'confirm',
       name: 'credits_attributions_q',
-      message: 'Are there any attributions for this project?\n\ne.g. third-party assets\n\n',
+      message: 'Are there any attributions for this project?\ne.g. third-party assets\n',
     },
     {
       type: 'input',
       name: 'credits_attributions_creators',
-      message: 'Enter the creators names\n\nUse the following format: "Creator 1, Creator 2, Creator 3"\n\n',
+      message: 'Enter the creators names\nUse the following format: "Creator 1, Creator 2, Creator 3"\n',
       when: (answers) => answers.credits_attributions_q === true,
     },
     {
       type: 'input',
       name: 'credits_attributions_links',
-      message: 'Enter links to their primary web presence\n\nEnsure they are in the same order as above\nUse the following format "https://www.example1.com, https://www.example2.com, https://www.example3.com"\n\n',
+      message: 'Enter links to their primary web presence\nEnsure they are in the same order as above\nUse the following format "https://www.example1.com, https://www.example2.com, https://www.example3.com"\n',
       when: (answers) => answers.credits_attributions_q === true,
     },
     {
