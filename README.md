@@ -38,7 +38,7 @@ The video below shows a demo of the app running in Git Bash:
 ### Attributions:
 
 - npm ([Link to Website](https://www.npmjs.com)
-- inquirer ([Link to Website](https://www.npmjs.com/package/inquirer{:target="_blank"}))
+- inquirer ([Link to Website](https://www.npmjs.com/package/inquirer))
 
 ## License
 
