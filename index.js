@@ -158,6 +158,7 @@ inquirer
     const projectQuestionsGit = answers.questions_git;
     const projectQuestionsEmail = answers.questions_email;
 
+// various let declarations to get user inputs from inquirer
     let projectCollaboratorsNames;
     let projectCollaboratorsGits;
     let projectAttributionsCreators;
@@ -187,8 +188,10 @@ inquirer
 // readme file name is suffixed with projectTitle and saved in the generated_files folder
     let readmeFileName = `./generated_files/${projectTitle}-README.md`
 
-let badgeOption
+// let declaration to store the correct license option
+    let badgeOption
 
+// switch statement to return the correct license option from the various options and sub options
     switch (projectLicense) {
       case 'BSD (Multiple Options)':
         badgeOption = projectLicenseBSD
@@ -213,8 +216,10 @@ let badgeOption
         break;
     };
 
+// let declaration to store the correct license badge link
     let licenseBadge;
 
+// switch statement to return the correct license badge link
     switch (badgeOption) {
       case 'Apache 2.0 License':
         licenseBadge = '[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)'
