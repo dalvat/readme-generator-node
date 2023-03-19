@@ -404,7 +404,7 @@ ${projectTests}\n\n`
 
 // readme file content for 
     readmeContent += `## Questions\n
-If you have any questions, feel free to contact me trhough my [GitHub profile](https://github.com/${projectQuestionsGit}) or [email me](mailto:${projectQuestionsEmail}).\n`
+If you have any questions, feel free to contact me through my [GitHub profile](https://github.com/${projectQuestionsGit}) or [email me](mailto:${projectQuestionsEmail}).\n`
 
 // writeFile operation to write the readme content to a file with the above defined filename
     fs.writeFile(readmeFileName, readmeContent, (error) => {
